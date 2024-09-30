@@ -1,0 +1,94 @@
+<nav class="sidebar poppins-b max-[768px]:hidden">
+  <header>
+    <div class="image-text">
+      <span class="image">
+        <img src="assets/login/catsu.png" alt="QLab Logo" />
+      </span>
+      <div class="items-center text logo-text overlock-b">
+        <span class="name">{{ title }}</span>
+      </div>
+    </div>
+    <i class="bx bx-chevron-left toggle"></i>
+  </header>
+
+  <div class="menu-bar">
+    <div class="menu">
+      <!-- Main Sidebar Items (before the separator) -->
+      <ul class="menu-links">
+        <li
+          *ngFor="let itemKey of mainItemKeys"
+          class="cursor-pointer select-none nav-link"
+          routerLinkActive="active"
+        >
+          <a
+            (click)="navigate(displayedItems[itemKey].redirect)"
+            [routerLink]="displayedItems[itemKey].routerLink"
+          >
+            <i class="bx {{ displayedItems[itemKey].icon }} icon"></i>
+            <span class="text nav-text">{{ itemKey }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Separator -->
+      <br />
+      <hr />
+
+      <!-- Special Sidebar Items (after the separator) -->
+      <ul class="menu-links">
+        <li
+          *ngFor="let itemKey of specialItemKeys"
+          class="cursor-pointer select-none nav-link"
+          routerLinkActive="active"
+        >
+          <a
+            (click)="navigate(displayedItems[itemKey].redirect)"
+            [routerLink]="displayedItems[itemKey].routerLink"
+          >
+            <i class="bx {{ displayedItems[itemKey].icon }} icon"></i>
+            <span class="text nav-text">{{ itemKey }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mb-3 bottom-content">
+      <li>
+        <a class="report">
+          <button
+            (click)="openModal()"
+            [ngClass]="{ 'smaller-text': isSidebarMinimized }"
+            class="w-full h-10 mt-2 mb-2 font-bold text-gray-500 rounded-lg poppins-b focus:outline-none"
+          >
+            {{ isSidebarMinimized ? "REPORT" : "REPORT A PROBLEM" }}
+          </button>
+        </a>
+      </li>
+
+      <!-- <li *ngIf="isStudent">
+        <button
+          *ngIf="progress"
+          (click)="goOffline()"
+          [ngStyle]="{ width: progress + '%' }"
+          class="flex items-center justify-center w-full h-10 mt-2 mb-2 font-bold text-white bg-blue-400 rounded-lg hover:bg-blue-500 poppins-b"
+        >
+          <span *ngIf="progress < 100">Downloading</span>
+          <span *ngIf="progress >= 100">Offline Available</span>
+        </button>
+        <button
+          *ngIf="!progress"
+          class="flex items-center justify-center w-full h-10 mt-2 mb-2 font-bold text-white rounded-lg hover:bg-slate-400 bg-slate-300 poppins-b"
+        >
+          Loading
+        </button>
+      </li> -->
+
+      <li class="cursor-pointer select-none">
+        <a (click)="confirmBox()">
+          <i class="bx bx-log-out icon"></i>
+          <span class="text nav-text">Logout</span>
+        </a>
+      </li>
+    </div>
+  </div>
+</nav>
